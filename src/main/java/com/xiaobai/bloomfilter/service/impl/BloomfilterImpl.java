@@ -49,12 +49,12 @@ public class BloomfilterImpl implements Bloomfilter {
                 int hash = HashUtil.BKDRHash(seeds[i], msg);
                 int index = hash % bitSet.size();
                 boolean tmp = bitSet.get(index);
-                if (tmp) {
-                    return true;
+                if (!tmp) {
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     @Override
